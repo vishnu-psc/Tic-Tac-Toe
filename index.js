@@ -16,6 +16,9 @@ let message = document.querySelector("#msg");
 // Boolean variable to keep track of whose turn it is, true for 'O' and false for 'X'
 let turnO = true;
 
+// Initialize count to track the number of box clicks
+let count = 0;
+
 
 /**
  * The winPattern array represents all possible winning combinations in a game of Tic Tac Toe.
@@ -45,14 +48,13 @@ let winPattern = [
  */
 const resetGame = () => {
     turnO = true;
+    count = 0;
     enableBoxes();
     msgContainer.classList.add("hide");
 }
 
 // Select all boxes and add event listener to each one
 boxes.forEach((box) => {
-    // Initialize count to track the number of box clicks
-    let count = 0;
 
     // Add click event listener to the box
     box.addEventListener("click", () => {
@@ -125,7 +127,7 @@ const enableBoxes = () => {
     // Loop through each input box
     for (let box of boxes) {
         box.disabled = false; // Enable the input box
-        box.value = ""; // Set the input box value to empty
+        box.innerText = ""; // Set the input box value to empty
     }
 }
 
